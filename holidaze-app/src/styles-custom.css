@@ -1,0 +1,158 @@
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Header Customization */
+h1, h2, h3 {
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+}
+
+/* Navbar Customization */
+.navbar {
+    background-color: white;
+}
+
+#user_avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.navbar .container-fluid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-brand {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.8rem;
+    color: black;
+}
+
+.navbar .search-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#searchInput {
+    width: 250px;
+}
+
+.btn-search, #btn-logout {
+    background-color: #f7e5e2;
+    border: none;
+    color: black;
+    margin-left: 5px;
+    padding: 8px 16px;
+}
+
+.btn-search:hover, #btn-logout:hover {
+    background-color: #d9c9c7
+}
+
+/* Welcome Section */
+#welcome {
+    background-color: #a3bba3;
+}
+
+/* Venue Cards */
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+.card-title {
+    color: black;
+    font-size: 1.6rem;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+}
+
+.card-text {
+    color: #555;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Button Styles */
+button, a.btn {
+    background-color: #f7e5e2;
+    color: black;
+    
+    font-size: 1rem;
+    padding: 10px 20px;
+}
+
+.btn-primary {
+    background-color: #a3bba3;
+    border-color: white;
+}
+
+.btn-primary:hover {
+    background-color: #8a9d8a;
+    border-color: white;
+}
+
+.btn-secondary {
+    background-color: #a3bba3;
+    border-color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #8a9d8a;
+    border-color: white;
+}
+
+/* Footer */
+footer {
+    background-color: #343a40;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+}
+
+#venue-details-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.venue-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    margin-bottom: 20px;
+}
+
+.venue-details-grid p {
+    margin: 0;
+}
+
+/* Booking Section */
+.booking-section {
+    text-align: center;
+    margin-top: 40px;
+}
+
+#calendar {
+    margin: 0 auto;
+}
+
+#edit-delete-buttons {
+    display: flex;
+    justify-content: space-between;
+}

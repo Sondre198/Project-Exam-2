@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <link href="styles-custom.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <title>Venue Details</title>
+</head>
+<body>
+    <nav class="navbar border-bottom">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center">
+                <img src="" alt="User Avatar" id="user_avatar" class="rounded-circle">
+                <span class="navbar-brand" id="user_name"></span>
+                <button id="createVenueBtn" class="btn btn-primary" style="display: none;">Create Venue</button>
+                <button id="viewBookingsBtn" class="btn btn-secondary">View Bookings</button>
+            </div>
+            <div class="search-group">
+                <button class="btn btn-secondary" type="button" id="btn-logout">Log out</button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="edit-modal" style="display: none;">
+        <form id="edit-form">
+            <h2>Edit Venue</h2>
+            <div class="mb-3">
+                <label for="edit-name" class="form-label">Venue Name</label>
+                <input type="text" id="edit-name" name="edit-name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="edit-description" class="form-label">Description</label>
+                <textarea id="edit-description" name="edit-description" class="form-control" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="edit-price" class="form-label">Price</label>
+                <input type="number" id="edit-price" name="edit-price" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="edit-max-guests" class="form-label">Max Guests</label>
+                <input type="number" id="edit-max-guests" name="edit-max-guests" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="edit-media" class="form-label">Media (URLs, comma-separated)</label>
+                <input type="text" id="edit-media" name="edit-media" class="form-control">
+            </div>
+            <div class="form-check">
+                <input type="checkbox" id="edit-wifi" name="edit-wifi" class="form-check-input">
+                <label for="edit-wifi" class="form-check-label">WiFi</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" id="edit-parking" name="edit-parking" class="form-check-input">
+                <label for="edit-parking" class="form-check-label">Parking</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" id="edit-breakfast" name="edit-breakfast" class="form-check-input">
+                <label for="edit-breakfast" class="form-check-label">Breakfast</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" id="edit-pets" name="edit-pets" class="form-check-input">
+                <label for="edit-pets" class="form-check-label">Pets Allowed</label>
+            </div>
+            <div class="mb-3">
+                <label for="edit-city" class="form-label">City</label>
+                <input type="text" id="edit-city" name="edit-city" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="edit-country" class="form-label">Country</label>
+                <input type="text" id="edit-country" name="edit-country" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+    </div>
+
+    <div class="container mt-5 bg-white p-4 shadow-lg rounded" style="max-width: 800px;">
+        <div class="container mt-5 d-flex justify-content-center mb-4" id="media" style="max-height: 300px; overflow: hidden;">
+
+        </div>
+    
+        <h1 class="mb-1" id="venue-name"></h1>
+        <p id="venue-description"></p>
+    
+        <div class="row row-cols-2 g-3">
+            <div class="col">
+                <p><strong>Price:</strong> $<span id="venue-price"></span></p>
+            </div>
+            <div class="col">
+                <p><strong>Max Guests:</strong> <span id="venue-max-guests"></span></p>
+            </div>
+            <div class="col">
+                <p><strong>Rating:</strong> <span id="venue-rating"></span></p>
+            </div>
+            <div class="col">
+                <p><strong>WiFi:</strong> <span id="venue-wifi"></span></p>
+            </div>
+            <div class="col">
+                <p><strong>Parking:</strong> <span id="venue-parking"></span></p>
+            </div>
+            <div class="col">
+                <p><strong>Breakfast:</strong> <span id="venue-breakfast"></span></p>
+            </div>
+            <div class="col">
+                <p><strong>Pets:</strong> <span id="venue-pets"></span></p>
+            </div>
+            <div class="col">
+                <p><strong>Location:</strong> <span id="venue-location"></span></p>
+            </div>
+        </div>
+        
+        <div class="d-flex justify-content-between mt-3">
+            <a class="btn btn-secondary" href="./feed.html">Back to Venues</a>
+            <div id="edit-delete-buttons" style="display: none;">
+                <button id="edit-venue" class="btn btn-primary">Edit Venue</button>
+                <button id="delete-venue" class="btn btn-danger">Delete Venue</button>
+            </div>
+        </div>
+        
+        <div class="booking-section mt-4 d-flex justify-content-center align-items-center flex-column">
+            <button id="book-venue-btn" class="btn btn-primary mb-3" style="display: none;">Book this venue</button>
+        
+            <div id="calendar" class="mt-4"></div>
+        
+            <div id="booking-form" class="mt-4" style="display: none;">
+                <h3>Book Venue</h3>
+                <form id="create-booking-form">
+                    <div class="mb-3">
+                        <label for="booking-start-date" class="form-label">Start Date</label>
+                        <input type="date" id="booking-start-date" name="startDate" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="booking-end-date" class="form-label">End Date</label>
+                        <input type="date" id="booking-end-date" name="endDate" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Confirm Booking</button>
+                </form>
+            </div>
+        </div>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./scripts/module.navbar.js" type="module"></script>
+    <script src="./scripts/module.page.js" type="module"></script>
+    <script src="./scripts/module.template.js" type="module"></script>
+    <script src="./scripts/page.venue.js" type="module"></script>
+</body>
+</html>
