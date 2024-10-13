@@ -28,10 +28,12 @@ Holidaze is a venue booking platform where users can book venues and venue manag
 
 2. **Navigate to the project directory:**
 
+   ```bash
    cd holidaze-app
 
 3. **Install dependencies:**
 
+   ```bash
    npm install
 
 ## Running the Project Locally
